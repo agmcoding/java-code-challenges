@@ -103,4 +103,17 @@ public class Main {
 
 	}
 	
+	/* 
+	 * Explanation about Arrays.sort() method: 
+	 * Arrays.sort method provides us with a quick and simple way to sort an array of primitives or objects that 
+	 * implement the Comparable interface in ascending order. When sorting primitives, the Arrays.sort method uses a 
+	 * Dual-Pivot implementation of Quicksort. 
+	 * May 20, 2021. 
+	 * Source Sorting Arrays in Java - Baeldunghttps://www.baeldung.com › java-sorting-arrays
+	 * 
+	 */
+	
+	/* StackOverflow question related to dual-pivot-quick-sort and quick-sort:
+	 * https://stackoverflow.com/questions/20917617/whats-the-difference-of-dual-pivot-quick-sort-and-quick-sort */
+	
 }
