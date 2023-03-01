@@ -60,15 +60,15 @@ public class Main {
 		}
 		
 		for (int i = 0; i < numRows; i++) {
-			
+
 			row.add(0, 1); // increment the row.
-			
+
 			/**
-             * Does sum operations with the values inserted in the row and then 
-             * saves it with the add() method from pascalsTriangle list.
-             */
+			 * Does sum operations with the values inserted in the row and then saves it
+			 * with the add() method from pascalsTriangle list.
+			 */
 			IntStream.range(1, row.size() - 1).forEach(index -> row.set(index, row.get(index) + row.get(index + 1)));
-			
+
 			pascalsTriangle.add(new ArrayList<>(row));
 		}
 		return pascalsTriangle;
