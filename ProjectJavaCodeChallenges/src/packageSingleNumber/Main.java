@@ -37,7 +37,7 @@ public class Main {
 //	1 <= nums.length <= 3 * 104
 //	-3 * 104 <= nums[i] <= 3 * 104
 //	Each element in the array appears twice except for one element which appears only once.
-	
+
 	public static void main(String[] args) {
 
 		int[] nums = { 4, 1, 2, 1, 2 };
@@ -78,6 +78,16 @@ public class Main {
 
 
 	/**
+	 * Prevents constrains of the challenge.
+	 */
+	private static boolean violateConstrains(int[] nums) {
+		return (nums == null || nums.length < 1 || nums.length > 3 * (int) Math.pow(10, 4)
+				|| Arrays.stream(nums).anyMatch(value -> value < -30000 || value > 30000));
+	}
+
+
+
+	/**
 	 * Returns the single number present in the int array.
 	 * By using HashMap, it doesn't use constant space, 
 	 * corresponding to specific constrain of the challenge.
@@ -111,8 +121,8 @@ public class Main {
 		/** Prevents constrains of the challenge. */
 		if (violateConstrains(nums)) return -1; // At business definition discretion.
 
-		int[] sortedNums = Arrays.stream(nums.clone()).sorted().toArray();
-		
+		int[] sortedNums = Arrays.stream(nums).sorted().toArray();
+
 		for (int i = 0; i < sortedNums.length; i += 2) {
 			if (i + 1 >= sortedNums.length) return sortedNums[i];
 			if (sortedNums[i] != sortedNums[i + 1]) return sortedNums[i];
@@ -133,15 +143,13 @@ public class Main {
 	 * and stores as values the amount of times the numbers were found.
 	 * Thus, by using filter() method from Stream API, filters the keys that have the requested repetition count.
 	 * Initially, the 'requestedRepetedNums' will be in this format:  key=value  (because of the use of entrySet() method).
-	 * For this reason, need to parse only these keys to an int array.
+	 * For this reason, parses these keys and stores them into an int array.
 	 */
 	private static int[] numbersThatMatchRepetitionCount(int[] nums, int repetitionCount) {
 
 		/** Prevents constrains of the challenge. */
 		int[] cannotFind = {-1}; // At business definition discretion.
-		if (violateConstrains(nums) || 1 > repetitionCount) {
-			return cannotFind;
-		}
+		if (violateConstrains(nums) || 1 > repetitionCount) return cannotFind;
 
 		Map<Integer, Integer> numsMap = new HashMap<>();
 
@@ -161,16 +169,6 @@ public class Main {
 						requestedRepeatedNums[index].toString().indexOf("="))));
 
 		return (result.length == 0) ? cannotFind : result;
-	}
-
-
-
-	/**
-	 * Prevents constrains of the challenge.
-	 */
-	private static boolean violateConstrains(int[] nums) {
-		return (nums == null || nums.length < 1 || nums.length > 3 * (int) Math.pow(10, 4)
-				|| Arrays.stream(nums).anyMatch(value -> value < -30000 || value > 30000));
 	}
 
 }
