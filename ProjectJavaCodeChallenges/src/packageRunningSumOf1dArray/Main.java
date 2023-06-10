@@ -1,5 +1,6 @@
 package packageRunningSumOf1dArray;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -39,24 +40,29 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		System.out.print("With Stream API: ");
 		int[] nums = { 3, 1, 2, 10, 1 };
-		Arrays.stream(runningSumWithStreamAPI(nums)).forEach(value -> System.out.print(value + ", "));
+		
+		System.out.print("With Stream API: ");
+		int[] nums1 = nums.clone();
+		Arrays.stream(runningSumWithStreamAPI(nums1)).forEach(value -> System.out.print(value + ", "));
 
 		System.out.print("\n\nWith 'Arrays.parallelPrefix()' method: ");
-		int[] nums2 = { 3, 1, 2, 10, 1 };
+		int[] nums2 = nums.clone();
 		Arrays.stream(runningSumWithArraysParallelPrefix(nums2)).forEach(value -> System.out.print(value + ", "));
 
 		System.out.print("\n\nNow just using for loop and modifying the input Array: ");
-		runningSumInPlace(nums);
-		Arrays.stream(nums).forEach(value -> System.out.print(value + ", "));
+		
+		int[] nums3 = nums.clone();
+		runningSumInPlace(nums3);
+		Arrays.stream(nums3).forEach(value -> System.out.print(value + ", "));
 
 		System.out.print("\n\nNow instead of returning an array, returning an integer list: ");
-		List<Integer> runningSumList = runningSumReturningList(3, 1, 2, 10, 1);
-		runningSumList.stream().forEach(value -> System.out.print(value + ", "));
+		List<Integer> runningSumList1 = runningSumReturningList(nums);
+		runningSumList1.stream().forEach(value -> System.out.print(value + ", "));
 
 		System.out.print("\n\nNow handling with an integer list as a parameter: ");
-		List<Integer> runningSumList2 = runningSumHandlingWithList(Arrays.asList(3, 1, 2, 10, 1));
+		List<Integer> runningSumList = new ArrayList<>(Arrays.asList(3, 1, 2, 10, 1));
+		List<Integer> runningSumList2 = runningSumHandlingWithList(runningSumList);
 		runningSumList2.stream().forEach(value -> System.out.print(value + ", "));
 
 		/**
@@ -102,7 +108,7 @@ public class Main {
 
 		if (nums == null || nums.length == 0) {
 			int[] responseForNull = { -1 };
-			return responseForNull;
+			return responseForNull; // At business definition discretion.
 		}
 
 		int[] runningSumArray = nums.clone();
@@ -132,11 +138,11 @@ public class Main {
 
 		if (nums == null || nums.length == 0) {
 			int[] responseForNull = { -1 };
-			return responseForNull;
+			return responseForNull; // At business definition discretion.
 		}
 
 		int[] runningSumArray = nums.clone();
-		Arrays.parallelPrefix(runningSumArray, (left, right) -> right += left);
+		Arrays.parallelPrefix(runningSumArray, Integer::sum); // in Lambda function it could be: (left, right) -> right + left
 
 		return runningSumArray;
 	}
@@ -221,7 +227,7 @@ public class Main {
 
 		List<Integer> numsCopy = nums.stream().collect(Collectors.toList());
 		IntStream.range(1, numsCopy.size())
-				.forEach(index -> numsCopy.set(index, numsCopy.get(index) + numsCopy.get(index - 1)));
+				.forEach(index -> numsCopy.set(index, Integer.sum(numsCopy.get(index), numsCopy.get(index - 1))));
 		return numsCopy;
 	}
 
