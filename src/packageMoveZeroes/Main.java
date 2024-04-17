@@ -1,7 +1,7 @@
 package packageMoveZeroes;
 
 public class Main {
-	
+  
 //	Challenge:
 //	
 //	Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
@@ -21,39 +21,39 @@ public class Main {
 //
 //	1 <= nums.length <= 104
 //	-231 <= nums[i] <= 231 - 1
-	 
-	public static void main(String[] args) {
-		
-		int[] nums = {0,1,0,3,12};
-		moveZeroes(nums);
-		for (int i: nums) {
-			System.out.print(i + ", ");
-		}
-		
-		/* Output Result:
-		 *
-		 * 1, 3, 12, 0, 0, 
-		 *
-		 */
-		
-	}
-	
-	
-	static void moveZeroes(int[] nums) {
+   
+  public static void main(String[] args) {
+    
+    int[] nums = {0,1,0,3,12};
+    moveZeroes(nums);
+    for (int i: nums) {
+      System.out.print(i + ", ");
+    }
+    
+    /* Output Result:
+     *
+     * 1, 3, 12, 0, 0, 
+     *
+     */
+    
+  }
+  
+  
+  static void moveZeroes(int[] nums) {
 
-		int countZeroElements = 0;
+    int countZeroElements = 0;
 
-		for (int i = 0; i < nums.length; i++) {
+    for (int i = 0; i < nums.length; i++) {
 
-			if (nums[i] == 0) countZeroElements++;
-			
-			else {
-				nums[i - countZeroElements] = nums[i]; /* Attributing a non zero value to an index in the left */
-				nums[i] = 0; /* Allocating zero values to the right of the array, in the current index */
-			}
+      if (nums[i] == 0) countZeroElements++;
+      
+      else {
+        nums[i - countZeroElements] = nums[i]; /* Attributing a non zero value to an index in the left */
+        nums[i] = 0; /* Allocating zero values to the right of the array, in the current index */
+      }
 
-		}
+    }
 
-	}
-	
+  }
+  
 }

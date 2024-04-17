@@ -25,34 +25,34 @@ public class Main {
 //	1 <= nums.length <= 104
 //	-104 <= nums[i] <= 104
 //	nums is sorted in non-decreasing order.
-	
-	public static void main(String[] args) {
-		
-		int[] nums = {-7,-3,2,3,11};
-		int[] array = sortedSquares(nums);
-		
-		for (int i: array) {
-			System.out.print(i + ", ");
-		}
-		
-		/* Output Result:
-		 *
-		 * 4, 9, 9, 49, 121,
-		 *
-		 */
-		
-	}
+  
+  public static void main(String[] args) {
+    
+    int[] nums = {-7,-3,2,3,11};
+    int[] array = sortedSquares(nums);
+    
+    for (int i: array) {
+      System.out.print(i + ", ");
+    }
+    
+    /* Output Result:
+     *
+     * 4, 9, 9, 49, 121,
+     *
+     */
+    
+  }
 
-	static int[] sortedSquares(int[] nums) {
-		int[] squaredSortedArray = new int[nums.length];
-		
-		for (int i = 0; i < nums.length; i++) {
-			squaredSortedArray[i] = nums[i] * nums[i];
-		}
-		
-		Arrays.sort(squaredSortedArray);
-		
-		return squaredSortedArray;
-	}
-	
+  static int[] sortedSquares(int[] nums) {
+    int[] squaredSortedArray = new int[nums.length];
+    
+    for (int i = 0; i < nums.length; i++) {
+      squaredSortedArray[i] = nums[i] * nums[i];
+    }
+    
+    Arrays.sort(squaredSortedArray);
+    
+    return squaredSortedArray;
+  }
+  
 }
