@@ -35,40 +35,40 @@ public class Main {
 //	2 <= nums.length <= 50
 //	0 <= nums[i] <= 100
 //	The largest element in nums is unique.
-	
-	public static void main(String[] args) {
+  
+  public static void main(String[] args) {
 
-		int[] nums = { 3, 6, 1, 0 };
-		
-		System.out.println("The dominant index of the array is: " + dominantIndex(nums));
-		
-		/**
-		 * Output Result:
-		 * 
-		 * The dominant index of the array is: 1
-		 */
-		
-	}
+    int[] nums = { 3, 6, 1, 0 };
+    
+    System.out.println("The dominant index of the array is: " + dominantIndex(nums));
+    
+    /**
+     * Output Result:
+     * 
+     * The dominant index of the array is: 1
+     */
+    
+  }
 
-	private static int dominantIndex(int[] nums) {
+  private static int dominantIndex(int[] nums) {
 
-		if (nums == null || nums.length <= 1) return -1;
+    if (nums == null || nums.length <= 1) return -1;
 
-		List<Integer> numsList = extractedToList(nums);
-		
-		int highestElement = Collections.max(numsList);
-		Collections.sort(numsList);
-		numsList.remove(numsList.get(numsList.size() - 1));
+    List<Integer> numsList = extractedToList(nums);
+    
+    int highestElement = Collections.max(numsList);
+    Collections.sort(numsList);
+    numsList.remove(numsList.get(numsList.size() - 1));
 
-		boolean allMatch = numsList.stream().allMatch(value -> highestElement >= 2 * value);
+    boolean allMatch = numsList.stream().allMatch(value -> highestElement >= 2 * value);
 
-		if (allMatch) return extractedToList(nums).indexOf(highestElement);
-		
-		return -1;
-	}
+    if (allMatch) return extractedToList(nums).indexOf(highestElement);
+    
+    return -1;
+  }
 
-	private static List<Integer> extractedToList(int[] nums) {
-		return Arrays.stream(nums).boxed().collect(Collectors.toList());
-	}
-	
+  private static List<Integer> extractedToList(int[] nums) {
+    return Arrays.stream(nums).boxed().collect(Collectors.toList());
+  }
+  
 }

@@ -30,37 +30,37 @@ public class Main {
 //	1 <= n <= 105
 //	1 <= nums[i] <= n
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
-		int[] nums = { 4, 3, 2, 7, 8, 2, 3, 1 };
+    int[] nums = { 4, 3, 2, 7, 8, 2, 3, 1 };
 
-		List<Integer> numsList = findDisappearedNumbers(nums);
-		numsList.forEach(num -> System.out.print(num + ", "));
+    List<Integer> numsList = findDisappearedNumbers(nums);
+    numsList.forEach(num -> System.out.print(num + ", "));
 
-		/**
-		 * Output Result:
-		 * 
-		 * 5, 6,
-		 */
+    /**
+     * Output Result:
+     * 
+     * 5, 6,
+     */
 
-	}
+  }
 
-	private static List<Integer> findDisappearedNumbers(int[] nums) {
+  private static List<Integer> findDisappearedNumbers(int[] nums) {
 
-		if (nums == null || nums.length == 0) {
-			return Collections.emptyList(); // At business definition discretion.
-		}
+    if (nums == null || nums.length == 0) {
+      return Collections.emptyList(); // At business definition discretion.
+    }
 
-		List<Integer> numsList = IntStream.of(nums).boxed().collect(Collectors.toList());
-		List<Integer> disappearedNumsList = new ArrayList<>();
+    List<Integer> numsList = IntStream.of(nums).boxed().collect(Collectors.toList());
+    List<Integer> disappearedNumsList = new ArrayList<>();
 
-		for (int i = 1; i <= numsList.size(); i++) {
-			if (!numsList.contains(i)) {
-				disappearedNumsList.add(i);
-			}
-		}
+    for (int i = 1; i <= numsList.size(); i++) {
+      if (!numsList.contains(i)) {
+        disappearedNumsList.add(i);
+      }
+    }
 
-		return disappearedNumsList;
-	}
+    return disappearedNumsList;
+  }
 
 }
