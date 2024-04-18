@@ -1,4 +1,4 @@
-package packageMiddleOfTheLinkedList;
+package packagemiddleofthelinkedlist;
 
 public class ListNode {
 
