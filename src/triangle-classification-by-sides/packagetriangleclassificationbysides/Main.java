@@ -1,4 +1,4 @@
-package packageTriangleClassificationBySides;
+package packagetriangleclassificationbysides;
 
 public class Main {
 
